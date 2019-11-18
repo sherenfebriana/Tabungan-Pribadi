@@ -27,6 +27,7 @@ public class Home {
     @FXML
     private Label namalbl, profillbl, tambahlbl, katlbl, pengaturanlbl, tentanglbl, keluarlbl;
     
+    
     @FXML
     private TextField carifield;
     
@@ -38,9 +39,7 @@ public class Home {
     ResultSet rs;
     
         
-    public void setnama(String nama) {
-        this.namalbl.setText(nama);
-    }
+
     
     public void profil(){
         try {
@@ -53,7 +52,6 @@ public class Home {
             rs = st.executeQuery("Select * from user where nama_user='" + this.namalbl.getText() + "'");
             System.out.println("sampe sini");
 
-           // hm.setnamalengkap(this.namalbl.getText());
             hm.setemail(rs.getString("email"));
             hm.setjeniskel(rs.getString("Jenis_kelamin"));
             hm.setnamalengkap(this.namalbl.getText());
@@ -92,8 +90,9 @@ public class Home {
         }
     }
     
+    
     public void tambahdata(){
-        
+     
     }
     
     public void tentang(){
@@ -101,11 +100,25 @@ public class Home {
     }
     
     public void keluar(){
-        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+            Parent signin = (Parent) loader.load();
+            Scene masuk = new Scene(signin);
+            Stage app_stage = (Stage) this.keluarlbl.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public void cari(){
         
 }
+    
+        public void setnama(String nama) {
+        this.namalbl.setText(nama);
+    }
     
 }

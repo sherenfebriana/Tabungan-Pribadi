@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
  */
 public class Profil {
     @FXML 
-    private Label  namalengkaplbl, emaillbl, tgllbl, profillbl, pemasukanlbl, pengeluaranlbl, pengaturanlbl, tentanglbl, keluarlbl, jkllbl;
+    private Label  namalengkaplbl, emaillbl, tgllbl, profillbl, tambahdatalbl, kategorilbl, pengaturanlbl, tentanglbl, keluarlbl, jkllbl;
     
     @FXML
     private Button hapusbtn, edit_user;
@@ -82,6 +82,40 @@ public class Profil {
 
     public void setjeniskel(String nama){
         this.jkllbl.setText(nama);
+    }
+    
+    public void tambahdata(){
+        
+    }
+    
+    public void kategori(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/kategori.fxml"));
+            Parent signin = (Parent) loader.load();
+            Kategori hm = loader.getController();
+            hm.setnama(this.namalengkaplbl.getText());
+            Scene masuk = new Scene(signin);
+            Stage app_stage = (Stage) this.kategorilbl.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void keluar(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+            Parent signin = (Parent) loader.load();
+            Scene masuk = new Scene(signin);
+            Stage app_stage = (Stage) this.keluarlbl.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
   
 }

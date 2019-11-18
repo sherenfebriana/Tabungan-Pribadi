@@ -18,7 +18,7 @@ public class Konek {
     public static Connection getConnect(){
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:d:\\Users\\WINDOWS\\Desktop\\Wangsa\\Wangsadb.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:Wangsadb.db");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Databse tidak ditemukan");
