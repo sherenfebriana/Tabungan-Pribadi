@@ -9,40 +9,70 @@ import id.ac.ukdw.Koneksi.Konek;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author WINDOWS
  */
-public class Kategori {
-
+public class Hutang {
     @FXML
-    private Label tambahkatlbl, editkatlbl, hapuskatlbl, profillbl, tambahlbl, keluarlbl, katlbl, namalbl, fiturlbl;
-
+    private Label lihatlbl, namalbl,keluarlbl, tambahlbl, kategorilbl, fiturlbl, profillbl;
+    
+    @FXML
+    private TextField namainput, jumlahinput, deskinput;
+    
+    @FXML
+    private DatePicker tglinput, tglbayarinput;
+    
+    @FXML
+    private Button tambahbt;
+    
     Connection conn;
     Statement st;
     ResultSet rs;
-
-    public void tambahkat() {
+    
+    public void inputData(ActionEvent ae){
+        String nama = namainput.getText();
+        String desk = deskinput.getText();
+        String jumlah = jumlahinput.getText();
+        String tanggal = tglinput.getValue().toString();
+        String tanggal_bayar = tglbayarinput.getValue().toString();
+        conn = Konek.getConnect();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/tambahkategori.fxml"));
+            st = conn.createStatement();
+            st.executeUpdate("insert into hutang(id_user, nama, deskripsi, jumlah_uang, tanggal, tanggal_bayar) values((select user_id from user where nama_user = '"+this.namalbl.getText()+"'), '"+nama+"', '"+desk+"', '"+jumlah+"', '"+tanggal+"', '"+tanggal_bayar+"')");
+            JOptionPane.showMessageDialog(null, "Berhasi Input");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hutang.fxml"));
             Parent signin = (Parent) loader.load();
-            TambahKat hm = loader.getController();
-            hm.setnama(this.namalbl.getText());
-            Scene masuk = new Scene(signin);
-            Stage app_stage = (Stage) this.tambahkatlbl.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
+                 Hutang hm=loader.getController();
+                 hm.setnama(this.namalbl.getText());
+                 Scene masuk = new Scene(signin);
+                 Stage app_stage  = (Stage) ((Node) ae.getSource()).getScene().getWindow();
+                 app_stage.close();
+                 app_stage.setScene(masuk);
+                 app_stage.show();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+            try{
+                conn.close();
+                st.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
     
@@ -61,7 +91,7 @@ public class Kategori {
             e.printStackTrace();
         }
     }
-
+    
     public void profil(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/profil.fxml"));
@@ -97,14 +127,14 @@ public class Kategori {
         }
     }
     
-    public void editkat() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editkategori.fxml"));
+    public void kategori(){
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/kategori.fxml"));
             Parent signin = (Parent) loader.load();
-            EditKategori hm = loader.getController();
-             hm.setnama(this.namalbl.getText());
+            Kategori hm = loader.getController();
+            hm.setnama(this.namalbl.getText());
             Scene masuk = new Scene(signin);
-            Stage app_stage = (Stage) this.editkatlbl.getScene().getWindow();
+            Stage app_stage = (Stage) this.kategorilbl.getScene().getWindow();
             app_stage.close();
             app_stage.setScene(masuk);
             app_stage.show();
@@ -112,23 +142,7 @@ public class Kategori {
             e.printStackTrace();
         }
     }
-
-    public void hapuskat() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hapuskategori.fxml"));
-            Parent signin = (Parent) loader.load();
-            HapusKategori hm = loader.getController();
-              hm.setnama(this.namalbl.getText());
-            Scene masuk = new Scene(signin);
-            Stage app_stage = (Stage) this.hapuskatlbl.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     public void tambahdata(){
          try{
             FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/input_data.fxml"));
@@ -144,6 +158,24 @@ public class Kategori {
             e.printStackTrace();
         }
     }
+        
+           public void lihatdata() {
+               try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hutang_data.fxml"));
+            Parent signin = (Parent) loader.load();
+            HutangData hm = loader.getController();
+            hm.setnama(this.namalbl.getText());
+            Scene masuk = new Scene(signin);
+            Stage app_stage = (Stage) this.lihatlbl.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+           
+          
 
     public void keluar() {
         try {
@@ -165,6 +197,6 @@ public class Kategori {
 
     public void setnama(String nama) {
         this.namalbl.setText(nama);
+        System.out.println(this.namalbl.getText());
     }
-
 }
