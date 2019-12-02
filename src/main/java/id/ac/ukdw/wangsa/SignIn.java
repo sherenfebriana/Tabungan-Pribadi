@@ -40,6 +40,7 @@ public class SignIn {
     Connection conn;
     Statement st;
     ResultSet rs;
+    ResultSet rs2;
     
     public void login(ActionEvent ae) throws IOException, ClassNotFoundException, SQLException{
        conn = Konek.getConnect();
