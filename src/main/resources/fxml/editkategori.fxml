@@ -24,12 +24,12 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="tambahdatalbl" layoutY="83.0" onMousePressed="#tambahdata" text="Tambah Data" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0">
+                        <Label fx:id="tambahlbl" layoutY="83.0" onMousePressed="#tambahdata" text="Tambah Data" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="4.0" layoutY="98.0" text="Pengaturan" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="98.0">
+                        <Label fx:id="fiturlbl" layoutX="4.0" layoutY="98.0" onMousePressed="#fitur" text="Fitur Tambahan" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="98.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
