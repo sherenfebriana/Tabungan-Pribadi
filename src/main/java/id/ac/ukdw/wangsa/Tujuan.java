@@ -16,7 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,44 +26,43 @@ import javax.swing.JOptionPane;
  *
  * @author WINDOWS
  */
-public class TambahKat {
-     @FXML
-    private Label namalbl,tambahlbl,kategorilbl,profillbl,keluarlbl, fiturlbl;
-    
+public class Tujuan {
+    @FXML
+    private Label datalbl, namalbl, tambahlbl, kategorilbl, fiturlbl, profillbl, keluarlbl ;
     
     @FXML
-    private TextField namakat;
+    private TextField namainput, jumlahinput;
     
     @FXML
-    private ComboBox pilihcb;
+    private DatePicker tglinput;
     
     @FXML
     private Button tambahbt;
     
     Connection conn;
-    ResultSet rs;
     Statement st;
+    ResultSet rs;
     
-    public void tambahkat(ActionEvent ae){
-          String kat=namakat.getText();
-        String jenis=pilihcb.getValue().toString();
-        conn=Konek.getConnect();
-//        System.out.println("disini");
-        try{
-            st=conn.createStatement();
-            st.executeUpdate("insert into kategori(id_user,nama_kat,jenis_kat) values((select user_id from user where nama_user='"+this.namalbl.getText()+"'),'"+kat+"','"+jenis+"')");
-            JOptionPane.showMessageDialog(null, "BERHASIL INPUT");
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
-                 Parent signin = (Parent) loader.load();
-                 Home hm=loader.getController();
+    //id_user harus null, kenapa?
+    public void inputData(ActionEvent ae){
+        String nama = namainput.getText();
+        String jumlah = jumlahinput.getText();
+        String tanggal = tglinput.getValue().toString();
+        conn = Konek.getConnect();
+        try {
+            st = conn.createStatement();
+            st.executeUpdate("insert into tujuan(id_user, nama_tujuan, jumlah_uang, tanggal) values((select user_id from user where nama_user = '"+this.namalbl.getText()+"'), '"+nama+"', '"+jumlah+"', '"+tanggal+"')");
+            JOptionPane.showMessageDialog(null, "Berhasi Input");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/tujuan.fxml"));
+            Parent signin = (Parent) loader.load();
+                 Tujuan hm=loader.getController();
                  hm.setnama(this.namalbl.getText());
                  Scene masuk = new Scene(signin);
                  Stage app_stage  = (Stage) ((Node) ae.getSource()).getScene().getWindow();
                  app_stage.close();
                  app_stage.setScene(masuk);
                  app_stage.show();
-                 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }finally{
             try{
@@ -72,6 +71,22 @@ public class TambahKat {
             }catch(Exception e){
                 e.printStackTrace();
             }
+        }
+    }
+    
+    public void lihatdata() {
+               try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/tujuan_data.fxml"));
+            Parent signin = (Parent) loader.load();
+            TujuanData hm = loader.getController();
+            hm.setnama(this.namalbl.getText());
+            Scene masuk = new Scene(signin);
+            Stage app_stage = (Stage) this.datalbl.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     
@@ -171,8 +186,9 @@ public class TambahKat {
             e.printStackTrace();
         }
     }
-    
-    public void setnama(String nama) {
+
+     public void setnama(String nama) {
         this.namalbl.setText(nama);
     }
+    
 }
