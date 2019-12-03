@@ -215,25 +215,6 @@ public class Home implements Initializable {
         }
     }
 
-//    public void masuk(ActionEvent aksi){
-//        conn = Konek.getConnect();
-//        String email = namalbl.getText();
-//        try {
-//            st = conn.createStatement();
-//            rs = st.executeQuery("SELECT nama_user from user where email = '"+email+"'");
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }finally{
-//            try{
-//                rs.close();
-//                st.close();
-//                conn.close();
-//            }catch(Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//    }
     public void setnama(String nama) {
         this.namalbl.setText(nama);
         isitabel();
