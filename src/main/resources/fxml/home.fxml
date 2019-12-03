@@ -88,6 +88,7 @@
                   <TableColumn fx:id="nomortbl" prefWidth="36.0" text="No" />
                   <TableColumn fx:id="namatbl" prefWidth="112.0" text="Nama " />
                   <TableColumn fx:id="kategoritbl" prefWidth="73.2" text="Kategori" />
+                  <TableColumn fx:id="jenistbl" prefWidth="75.0" text="Jenis Kategori" />
                   <TableColumn fx:id="tanggaltbl" prefWidth="73.2" text="Tanggal" />
                   <TableColumn fx:id="jumlahtbl" prefWidth="73.2" text="Jumlah" />
                </columns>
