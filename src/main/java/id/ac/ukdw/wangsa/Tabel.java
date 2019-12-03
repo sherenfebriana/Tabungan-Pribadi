@@ -15,14 +15,16 @@ public class Tabel {
     private String no;
     private String nama_notes;
     private String kategori;
+    private String jenis_kat;
     private String tanggal;
     private String jumlah;
 
-    public Tabel(String id_tabel, String no, String nama_notes, String kategori, String tanggal, String jumlah) {
+    public Tabel(String id_tabel, String no, String nama_notes, String kategori, String jenis_kat, String tanggal, String jumlah) {
         this.id_tabel = id_tabel;
         this.no = no;
         this.nama_notes = nama_notes;
         this.kategori = kategori;
+        this.jenis_kat = jenis_kat;
         this.tanggal = tanggal;
         this.jumlah = jumlah;
 
@@ -112,6 +114,20 @@ public class Tabel {
      */
     public void setJumlah(String jumlah) {
         this.jumlah = jumlah;
+    }
+
+    /**
+     * @return the jenis_kat
+     */
+    public String getJenis_kat() {
+        return jenis_kat;
+    }
+
+    /**
+     * @param jenis_kat the jenis_kat to set
+     */
+    public void setJenis_kat(String jenis_kat) {
+        this.jenis_kat = jenis_kat;
     }
 
 }
