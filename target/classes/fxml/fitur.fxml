@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.wangsa.Fitur">
+   <children>
+      <AnchorPane layoutX="41.0" layoutY="29.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #96D1C7;" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="51.0" layoutY="39.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #B2FCFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B2FCFF;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+               <children>
+                  <AnchorPane layoutY="92.0" prefHeight="258.0" prefWidth="180.0" style="-fx-background-color: #96D1C7;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="92.0">
+                     <children>
+                        <Label fx:id="profillbl" layoutX="5.0" layoutY="47.0" onMousePressed="#profil" text="Profil" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tambahlbl" layoutY="83.0" onMousePressed="#tambahdata" text="Tambah Data" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="pengaturanlbl" layoutX="4.0" layoutY="98.0" text="Fitur Tambahan" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="100.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tentanglbl" layoutX="6.0" layoutY="119.0" text="Tentang" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="125.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="keluarlbl" layoutX="13.0" layoutY="148.0" onMouseEntered="#mouseinKeluar" onMousePressed="#keluar" text="Keluar" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="150.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="katlbl" layoutX="5.0" layoutY="71.0" onMousePressed="#kategori" text="Kategori" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="75.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="165.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #96D1C7;" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                     <children>
+                        <Label layoutX="8.0" layoutY="33.0" text="Fitur Tambahan">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="namalbl" layoutX="126.0" layoutY="33.0" text="NAMA">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Label fx:id="tujuanlbl" layoutX="193.0" layoutY="106.0" onMousePressed="#tujuan" text="Tujuan (Wish List)" AnchorPane.leftAnchor="196.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hutanglbl" layoutX="196.0" layoutY="136.0" onMousePressed="#hutang" text="Hutang" AnchorPane.leftAnchor="196.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

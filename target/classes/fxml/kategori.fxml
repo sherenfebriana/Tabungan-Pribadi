@@ -19,12 +19,12 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="tambahdatalbl" layoutY="83.0" onMousePressed="#tambahdata" text="Tambah Data" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0">
+                        <Label fx:id="tambahlbl" layoutY="83.0" onMousePressed="#tambahdata" text="Tambah Data" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="pengaturanlbl" layoutX="4.0" layoutY="98.0" text="Pengaturan" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="100.0">
+                        <Label fx:id="fiturlbl" layoutX="4.0" layoutY="98.0" onMousePressed="#fitur" text="Fitur tambahan" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="100.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -49,6 +49,11 @@
                   <AnchorPane layoutX="165.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #96D1C7;" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <children>
                         <Label layoutX="8.0" layoutY="33.0" text="Kategori">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="namalbl" layoutX="102.0" layoutY="33.0" text="NAMA">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
