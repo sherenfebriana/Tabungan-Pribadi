@@ -29,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -54,6 +55,9 @@ public class TujuanData implements Initializable{
 
     @FXML
     private TableView<TabelTujuan> datatbl;
+    
+    @FXML
+    private ImageView wangsa_img;
     
     String nama_keuangan;
 
@@ -154,6 +158,22 @@ public class TujuanData implements Initializable{
                 conn.close();
             } catch (Exception e) {
             }
+        }
+    }
+    
+    public void home(){
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+            Parent signin = (Parent) loader.load();
+            Home hm=loader.getController();
+            hm.setnama(this.namalbl.getText());
+            Scene masuk = new Scene(signin);
+            Stage app_stage  = (Stage) this.wangsa_img.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
     

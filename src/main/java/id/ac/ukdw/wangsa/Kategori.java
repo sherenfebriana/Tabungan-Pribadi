@@ -15,6 +15,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +26,10 @@ public class Kategori {
 
     @FXML
     private Label tambahkatlbl, editkatlbl, hapuskatlbl, profillbl, tambahlbl, keluarlbl, katlbl, namalbl, fiturlbl;
-
+    
+    @FXML
+    private ImageView wangsa_img;
+    
     Connection conn;
     Statement st;
     ResultSet rs;
@@ -54,6 +58,23 @@ public class Kategori {
             hm.setnama(this.namalbl.getText());
             Scene masuk = new Scene(signin);
             Stage app_stage  = (Stage) this.fiturlbl.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void home(){
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+            Parent signin = (Parent) loader.load();
+            Home hm=loader.getController();
+            hm.setnama(this.namalbl.getText());
+//            hm.setKal(this.totalkalori.getText());
+            Scene masuk = new Scene(signin);
+            Stage app_stage  = (Stage) this.wangsa_img.getScene().getWindow();
             app_stage.close();
             app_stage.setScene(masuk);
             app_stage.show();

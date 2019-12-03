@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +40,9 @@ public class InputData {
 
     @FXML
     private Label namalbl, profillbl, katlbl, keluarlbl, fiturlbl;
+    
+    @FXML
+    private ImageView wangsa_img;
 
     Connection conn;
     ResultSet rs;
@@ -114,6 +118,23 @@ public void fitur(){
         }
     }
 
+    public void home(){
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+            Parent signin = (Parent) loader.load();
+            Home hm=loader.getController();
+            hm.setnama(this.namalbl.getText());
+//            hm.setKal(this.totalkalori.getText());
+            Scene masuk = new Scene(signin);
+            Stage app_stage  = (Stage) this.wangsa_img.getScene().getWindow();
+            app_stage.close();
+            app_stage.setScene(masuk);
+            app_stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void keluar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
@@ -126,22 +147,6 @@ public void fitur(){
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void home() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
-//            Parent signin = (Parent) loader.load();
-//            Home hm = loader.getController();
-//            hm.setnama(this.namalbl.getText());
-//            Scene masuk = new Scene(signin);
-//            Stage app_stage = (Stage) this.logo_makankuy.getScene().getWindow();
-//            app_stage.close();
-//            app_stage.setScene(masuk);
-//            app_stage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
     public void kategori(){

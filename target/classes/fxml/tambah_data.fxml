@@ -7,6 +7,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -108,6 +110,11 @@
                      </font>
                   </Label>
                   <DatePicker fx:id="tglinput" layoutX="356.0" layoutY="257.0" AnchorPane.topAnchor="257.0" />
+                  <ImageView fx:id="wangsa_img" fitHeight="41.0" fitWidth="169.0" layoutX="8.0" layoutY="26.0" onMousePressed="#home" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
