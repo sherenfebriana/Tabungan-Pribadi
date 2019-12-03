@@ -29,7 +29,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -55,9 +54,6 @@ public class TujuanData implements Initializable{
 
     @FXML
     private TableView<TabelTujuan> datatbl;
-    
-    @FXML
-    private ImageView wangsa_img;
     
     String nama_keuangan;
 
@@ -145,8 +141,8 @@ public class TujuanData implements Initializable{
                         rs.getString("id_tujuan"),
                         String.valueOf(i++),
                         rs.getString("nama_tujuan"),
-                        rs.getString("tanggal"),
-                        rs.getString("jumlah_uang")
+                        rs.getString("jumlah_uang"),
+                        rs.getString("tanggal")
                 ));
 
             }
@@ -158,22 +154,6 @@ public class TujuanData implements Initializable{
                 conn.close();
             } catch (Exception e) {
             }
-        }
-    }
-    
-    public void home(){
-        try{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
-            Parent signin = (Parent) loader.load();
-            Home hm=loader.getController();
-            hm.setnama(this.namalbl.getText());
-            Scene masuk = new Scene(signin);
-            Stage app_stage  = (Stage) this.wangsa_img.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
         }
     }
     
@@ -203,12 +183,49 @@ public class TujuanData implements Initializable{
         isitabel();
     }
 
+    public void profil() {
+
+    }
+
+    public void tambahdata() {
+
+    }
+
+    public void fitur() {
+
+    }
+
     public void tentang() {
 
     }
 
-    public void cari() {
+    public void kategori() {
 
+    }
+
+    public void cari() {
+        try {
+            conn = Konek.getConnect();
+            st = conn.createStatement();
+            //  System.out.println("select * from data_makan_minum inner join kalori on data_makan_minum.id_kalori=kalori.id_kalori where id_user=(select user_id from user where nama='"+this.namalbl.getText()+"') and nama_makan_minum like '%"+this.fieldcari.getText()+"%'");
+            rs = st.executeQuery("select * from tujuan where id_user=(select user_id from user where nama_user='" + this.namalbl.getText() + "') and nama_tujuan like '%" + this.carifield.getText() + "%'");
+            int i = 1;
+//            System.out.println(rs.getString("nama_makan_minum"));
+            ObservableList<TabelTujuan> isi = FXCollections.observableArrayList(); //nampung data dari tabel
+
+            while (rs.next()) {
+                isi.add(new TabelTujuan(
+                        rs.getString("id_tujuan"),
+                        String.valueOf(i++),
+                        rs.getString("nama_tujuan"),
+                        rs.getString("jumlah_uang"),
+                        rs.getString("tanggal")
+                ));
+            }
+            this.datatbl.setItems(isi);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void keluar() {
@@ -221,89 +238,6 @@ public class TujuanData implements Initializable{
             app_stage.setScene(masuk);
             app_stage.show();
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void profil(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/profil.fxml"));
-            Parent signin = (Parent) loader.load();
-            Profil hm = loader.getController();
-
-            conn = Konek.getConnect();
-            st = conn.createStatement();
-            rs = st.executeQuery("Select * from user where nama_user='" + this.namalbl.getText() + "'");
-            System.out.println("sampe sini");
-
-           // hm.setnamalengkap(this.namalbl.getText());
-            hm.setemail(rs.getString("email"));
-            hm.setjeniskel(rs.getString("Jenis_kelamin"));
-            hm.setnamalengkap(this.namalbl.getText());
-            hm.settanggal(rs.getString("tgl_lahir"));
-            hm.setnama(rs.getString("nama_user"));
-            Scene masuk = new Scene(signin);
-            Stage app_stage = (Stage) this.profillbl.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                rs.close();
-                st.close();
-                conn.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    
-    public void kategori(){
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/kategori.fxml"));
-            Parent signin = (Parent) loader.load();
-            Kategori hm = loader.getController();
-            hm.setnama(this.namalbl.getText());
-            Scene masuk = new Scene(signin);
-            Stage app_stage = (Stage) this.katlbl.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void tambahdata(){
-         try{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/input_data.fxml"));
-            Parent signin = (Parent) loader.load();
-            InputData hm=loader.getController();
-            hm.setnama(this.namalbl.getText());
-            Scene masuk = new Scene(signin);
-            Stage app_stage  = (Stage) this.tambahlbl.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    public void fitur(){
-        try{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/fitur.fxml"));
-            Parent signin = (Parent) loader.load();
-            Fitur hm=loader.getController();
-            hm.setnama(this.namalbl.getText());
-            Scene masuk = new Scene(signin);
-            Stage app_stage  = (Stage) this.fiturlbl.getScene().getWindow();
-            app_stage.close();
-            app_stage.setScene(masuk);
-            app_stage.show();
-        }catch(Exception e){
             e.printStackTrace();
         }
     }
